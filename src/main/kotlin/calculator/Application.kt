@@ -6,7 +6,12 @@ fun main() {
     println("덧셈할 문자열을 입력해 주세요.")
     val inputString = readUserString()
     val numList = extractNumList(inputString)
+    val sum = sumNumList(numList)
+    println("결과: $sum")
 }
+
+fun sumNumList(numList: List<Int>) = numList.sumOf{it}
+
 fun extractNumList(input: String): List<Int> {
     if(input.isEmpty()) return listOf(0)
     val strNumList = input.split(",", ":")
