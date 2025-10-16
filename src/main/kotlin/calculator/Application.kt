@@ -1,17 +1,24 @@
 package calculator
 
 import camp.nextstep.edu.missionutils.Console.readLine
+var validChars = "0123456789,:"
 
 fun main() {
     println("덧셈할 문자열을 입력해 주세요.")
     val inputString = readUserString()
     val customDlmt = extractCustomDelimiter(inputString)
     val numberSection = getNumberSection(inputString, customDlmt)
+    val isInputValid = checkInputValid(numberSection)
     val numList = extractNumList(numberSection, customDlmt)
     val sum = sumNumList(numList)
     println("결과 : $sum")
 }
 
+fun checkInputValid( input: String ): Boolean {
+    if(input.all{it  in validChars }) return true
+    else throw IllegalArgumentException("유효하지 않은 문자열 형식입니다. 프로그램을 종료합니다")
+
+}
 fun getNumberSection( input: String, customDlmt: String?): String {
     if(customDlmt != null) return input.substringAfter("\\n")
     return input
@@ -33,6 +40,7 @@ fun extractCustomDelimiter(input: String) :String?{
     val customDlmtRegex = Regex("""^//(.+?)\\n""")
     val match = customDlmtRegex.find(input)
     val customDlmt = match?.groupValues?.get(1)
+    if(customDlmt != null) validChars += customDlmt
     return customDlmt
 }
 
