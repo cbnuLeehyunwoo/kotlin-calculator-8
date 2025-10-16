@@ -31,7 +31,7 @@ fun extractNumList(input: String, customDlmt: String?): List<Int> {
     return intNumList
 }
 fun extractCustomDelimiter(input: String) :String?{
-    val customDlmtRegex = Regex("^//(.*?)\\n")
+    val customDlmtRegex = Regex("^//(.+?)\\n")
     val match = customDlmtRegex.find(input)
     val customDlmt = match?.groupValues?.get(1)
     return customDlmt
