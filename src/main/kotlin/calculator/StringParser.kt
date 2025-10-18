@@ -25,7 +25,7 @@ class StringParser {
     }
 
     private fun getCustomDelimiter(input: String) :String?{
-        val customDelimiterRegex = Regex("""^//(.+?)\\n""")
+        val customDelimiterRegex = Regex("""^//([^.]+?)\\n""")
         val match = customDelimiterRegex.find(input)
         val customDelimiter = match?.groupValues?.get(1)
         if(customDelimiter != null) validChars += customDelimiter
