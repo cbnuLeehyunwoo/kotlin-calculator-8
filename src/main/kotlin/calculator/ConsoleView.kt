@@ -6,5 +6,13 @@ class ConsoleView {
         println("덧셈할 문자열을 입력해 주세요.")
         return readLine()
     }
-    fun printResult(result : Double) = println("결과 : $result")
+    fun printResult(result : Double) = println("결과 : ${ result.toSmartString() }")
+
+    private fun Double.toSmartString() : String {
+        return if(this == this.toInt().toDouble())  {
+            this.toInt().toString()
+        } else {
+            this.toString()
+        }
+    }
 }
