@@ -7,7 +7,7 @@ class StringParser {
         val customDelimiter = getCustomDelimiter(input)
         val numberSection = getNumberSection(input, customDelimiter)
         checkInputValid(numberSection)
-        val strNumList = getNumList(numberSection, customDelimiter)
+        val strNumList = getStrNumList(numberSection, customDelimiter)
         return strNumList.map{ it.toInt() }
     }
 
@@ -16,7 +16,7 @@ class StringParser {
         return input
     }
 
-    private fun getNumList(input: String, customDelimiter: String?): List<String> {
+    private fun getStrNumList(input: String, customDelimiter: String?): List<String> {
         if(input.isEmpty()) return listOf("0")
         val delimiters = mutableListOf(",", ":")
         if (customDelimiter != null) delimiters += customDelimiter
