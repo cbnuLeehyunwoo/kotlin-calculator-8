@@ -1,14 +1,14 @@
 package calculator
 
 class StringParser {
-    private var validChars = "0123456789,:"
+    private var validChars = "0123456789.,:"
 
-    fun parse(input: String): List<Int> {
+    fun parse(input: String): List<Double> {
         val customDelimiter = getCustomDelimiter(input)
         val numberSection = getNumberSection(input, customDelimiter)
         checkInputValid(numberSection)
         val strNumList = getStrNumList(numberSection, customDelimiter)
-        return strNumList.map{ it.toIntOrNull() ?: 0 }
+        return strNumList.map{ it.toDoubleOrNull() ?: 0.0 }
     }
 
     private fun getNumberSection( input: String, customDlmt: String?): String {
@@ -17,7 +17,7 @@ class StringParser {
     }
 
     private fun getStrNumList(input: String, customDelimiter: String?): List<String> {
-        if(input.isEmpty()) return listOf("0")
+        if(input.isEmpty()) return listOf("0.0")
         val delimiters = mutableListOf(",", ":")
         if (customDelimiter != null) delimiters += customDelimiter
         val strNumList = input.split(*delimiters.toTypedArray())
