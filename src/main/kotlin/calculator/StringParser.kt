@@ -8,7 +8,7 @@ class StringParser {
         val numberSection = getNumberSection(input, customDelimiter)
         checkInputValid(numberSection)
         val strNumList = getStrNumList(numberSection, customDelimiter)
-        return strNumList.map{ it.toInt() }
+        return strNumList.map{ it.toIntOrNull() ?: 0 }
     }
 
     private fun getNumberSection( input: String, customDlmt: String?): String {
