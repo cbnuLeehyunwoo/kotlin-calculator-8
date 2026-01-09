@@ -32,7 +32,7 @@ class CalculatorController(
         try {
             Validator.validateCustomDelimiter(customDelimiter.trim())
         } catch (e: IllegalArgumentException) {
-            println(e)
+            throw e
         }
         return customDelimiter
     }
@@ -41,7 +41,7 @@ class CalculatorController(
         try {
             Validator.validateNumberCandidate(numbers)
         } catch (e: IllegalArgumentException) {
-            println(e)
+            throw e
         }
         return numbers.map { it.toInt() }
     }
