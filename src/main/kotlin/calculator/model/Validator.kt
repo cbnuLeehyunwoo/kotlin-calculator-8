@@ -11,8 +11,11 @@ object Validator {
 
     fun validateNumberCandidate(candidate: List<String>) {
         candidate.forEach {
-            it.toIntOrNull()
+            val candidate = it.toIntOrNull()
                 ?: throw IllegalArgumentException("[ERROR] 잘못된 숫자입력입니다.")
+            if(candidate < 0) {
+                throw IllegalArgumentException("[ERROR] 숫자는 음수일 수 없읍니다.")
+            }
         }
     }
 
